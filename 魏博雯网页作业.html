@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html>
+<head> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>魏博雯同学的网页作业</title> 
+<style type="text/css"> 
+html{height:100%} 
+body{height:100%;margin:0px;padding:0px} 
+#container{height:100%} 
+</style> 
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=v4KEbCG64O9zeSUyP6MFLX7xqOiR4IhU">
+</script>
+</head> 
+  
+<body> 
+<div id="container"></div>
+<script type="text/javascript">
+var map = new BMapGL.Map("container");
+// 创建地图实例 
+var point = new BMapGL.Point(123.0027, 41.1158);
+// 创建点坐标 
+map.centerAndZoom(point, 18);
+
+var myicon = new BMapGL.Icon(
+　　　　　　　　'https://img0.baidu.com/it/u=2182151497,3303388207&fm=253&fmt=auto&app=138&f=JPEG?w=490&h=367', 
+　　　　　　　　new BMapGL.Size(144,144), // 视窗大小
+　　　　　　　　{
+　　　　　　　　　　imageSize: new BMapGL.Size(144,92), // 引用图片实际大小
+　　　　　　　　　　imageOffset:new BMapGL.Size(0,0)  // 图片相对视窗的偏移
+　　　　　　　　}
+　　　　 );
+        var marker = new BMapGL.Marker(point,{icon:myicon});
+        map.addOverlay(marker);    
+
+
+var marker = new BMapGL.Marker(point);  // 创建标注
+	map.addOverlay(marker);  // 将标注添加到地图中
+	var opts = {
+	    width : 300,     // 信息窗口宽度
+	    height: 300,     // 信息窗口高度
+	    title : "胜利广场" , // 信息窗口标题
+	    message:"在我家附近。"
+	}
+	var infoWindow = new BMapGL.InfoWindow("全市最大、历史最悠久、也最美丽的城市广场，坐落在鞍山铁东区中心地带，是以景观、集散为主的大型交通型城市广场，总面积19200平方米，其中铺装面积12300平方米，绿化面积6900平方米。1948年，我军解放鞍山期间，国民党军队曾经在这里利用街区转盘构筑了坚固的钢筋混凝土碉堡群，与烈士山、市公署大楼互为犄角，作为重要的防守阵地和据点，做最后的顽抗。当年2月19日，解放军向市区发动攻击，在占领烈士山后，解放军曾在这里与国民党军队发生激战。", opts);  // 创建信息窗口对象 
+	marker.addEventListener("click", function(){          
+		map.openInfoWindow(infoWindow, point); //开启信息窗口
+	}); 
+
+</script> 
+</body> 
+</html>
+
+
+
+
+
+
+
+
